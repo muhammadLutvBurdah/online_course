@@ -63,9 +63,9 @@
 <div class="login-container">
     <div class="login-card">
         <h3 class="text-center">Welcome Back 👋</h3>
-        <form method="POST" action="/login">
-            <!-- CSRF Token -->
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        
+        <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
+            @csrf
 
             <div class="form-group">
                 <label for="email">Email address</label>

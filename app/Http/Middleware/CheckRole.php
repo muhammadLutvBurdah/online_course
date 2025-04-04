@@ -14,11 +14,12 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->role === 'admin') {
+        if (Auth::check() && Auth::user()->role === 'admin') {
             return $next($request);
         }
-        return redirect('/');
+
+        return redirect('/home')->with('error', 'Anda tidak memiliki akses ke halaman ini');
     }
 }
