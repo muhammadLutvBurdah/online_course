@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="pc-container">
+    {{-- <div class="pc-container">
         <div class="pc-content">
             <!-- [ breadcrumb ] start -->
             <div class="page-header">
@@ -58,6 +58,6 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection
