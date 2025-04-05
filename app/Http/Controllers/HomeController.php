@@ -25,17 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-        if (!$user) {
+        if (!Auth::check()) {
             return redirect('/login')->with('error', 'Silakan login terlebih dahulu.');
         }
-
+    
+        $user = Auth::user();
+    
         if ($user->role === 'admin') {
-            return view('dashboard.home');
+            $totalKursus = kursus::count();
+            $totalMateri = materi::count();
+            $totalPembayaran = pembayaran::count();
+    
+            return view('dashboard.user', compact('totalKursus', 'totalMateri', 'totalPembayaran'));
         } elseif ($user->role === 'user') {
             return view('dashboard.user');
         }
-        return redirect('/')->with('error', 'Akses tidak diizinkan.');
+    
+        // return redirect('/')->with('error', 'Akses tidak diizinkan.');
     }
 }

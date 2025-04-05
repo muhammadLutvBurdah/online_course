@@ -34,6 +34,12 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard/admin', [dashboardController::class, 'admin'])->name('dashboard.admin');
+    Route::get('/dashboard/user', [dashboardController::class, 'user'])->name('dashboard.user');
+});
+
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

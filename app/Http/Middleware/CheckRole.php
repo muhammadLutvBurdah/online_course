@@ -14,11 +14,12 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, $role)
     {
-        if (Auth::check() && Auth::user()->role === $role) {
-            return $next($request);
+        if (!Auth::check() || Auth::user()->role !== $role) {
+            abort(403, 'Unauthorized');
         }
-        abort(403);
+        
+        return $next($request);
     }
 }
