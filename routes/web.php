@@ -7,6 +7,7 @@ use App\Http\Controllers\materiController;
 use App\Http\Controllers\pembayaranController;
 use App\Http\Controllers\kursusPenggunaController;
 use App\Http\Controllers\materiPenggunaController;
+use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -30,7 +31,8 @@ Route::get('/', function () {
 
 
 // Rute untuk halaman utama
-Route::get('/', [dashboardController::class, 'index'])->name('home');
+Route::get('/home', [dashboardController::class, 'index'])->name('home');
+
 
 // Rute untuk dashboard
 Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
@@ -81,3 +83,13 @@ Route::get('/materiPengguna', [materiPenggunaController::class, 'index'])->name(
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// CRUD Pengguna
+Route::get('/users', [userController::class, 'index'])->name('users.index');
+Route::get('/users/create', [userController::class, 'create'])->name('users.create');
+Route::post('/users', [userController::class, 'store'])->name('users.store');
+Route::get('/users/{users}/edit', [userController::class, 'edit'])->name('users.edit');
+Route::put('/users/{users}', [userController::class, 'update'])->name('users.update');
+Route::delete('/users/{users}', [userController::class, 'destroy'])->name('users.destroy');
+Route::get('/users/{users}', [userController::class, 'show'])->name('users.show');

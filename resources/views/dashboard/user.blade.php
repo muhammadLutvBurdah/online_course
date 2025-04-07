@@ -2,9 +2,8 @@
 
 @section('content')
 
-    {{-- <div class="pc-container">
+   <!-- <div class="pc-container">
         <div class="pc-content">
-            <!-- [ breadcrumb ] start -->
             <div class="page-header">
                 <div class="page-block">
                     <div class="row align-items-center">
@@ -19,10 +18,7 @@
                     </div>
                 </div>
             </div>
-            <!-- [ breadcrumb ] end -->
-            <!-- [ Main Content ] start -->
             <div class="row">
-                <!-- [ sample-page ] start -->
                 <div class="col-md-6 col-xl-3">
                     <div class="card">
                         <div class="card-body">
@@ -47,17 +43,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h6 class="mb-2 f-w-400 text-muted">Total Pembayaran</h6>
-                            <h4 class="mb-3">{{ number_format($totalPembayaran) }} <span class="badge bg-light-danger border border-danger"></span></h4>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </div> --}}
+    </div>  -->
 
 @endsection

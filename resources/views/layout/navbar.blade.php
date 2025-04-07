@@ -42,6 +42,12 @@
                 <span class="pc-mtext">Pembayaran</span>
             </a>
         </li>
+        <li class="pc-item">
+              <a href="{{ route('users.index') }}" class="pc-link">
+                  <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
+                  <span class="pc-mtext">Pengguna</span>
+              </a>
+          </li>
 
       @else
           <li class="pc-item pc-caption">
@@ -52,7 +58,13 @@
           <li class="pc-item">
               <a href="{{ route('kursusPengguna.index') }}" class="pc-link">
                   <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
-                  <span class="pc-mtext">Kursus Pengguna</span>
+                  <span class="pc-mtext">Kursus</span>
+              </a>
+          </li>
+          <li class="pc-item">
+              <a href="{{ route('materiPengguna.index') }}" class="pc-link">
+                  <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
+                  <span class="pc-mtext">Materi</span>
               </a>
           </li>
       @endif
