@@ -27,7 +27,6 @@ class kursusController extends Controller
     public function create()
     {
         return view('kursus.create');
-        return view('kursus.create');
     }
 
     /**

@@ -14,11 +14,11 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, ...$roles)
     {
-        if (auth()->check() && auth()->user()->role === 'admin') {
-            return $next($request);
+        if (!in_array(auth()->user()->role, $roles)) {
+            abort(403, 'Unauthorized.');
         }
-        return redirect('/');
+        return $next($request);
     }
 }

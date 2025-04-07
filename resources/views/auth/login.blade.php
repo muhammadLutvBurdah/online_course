@@ -63,10 +63,9 @@
 <div class="login-container">
     <div class="login-card">
         <h3 class="text-center">Welcome Back 👋</h3>
-        <form method="POST" action="/login">
-            <!-- CSRF Token -->
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+       <form method="POST" action="{{ route('login') }}">
+          @csrf
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input id="email" type="email" class="form-control" name="email"
@@ -90,7 +89,7 @@
             </div>
             <div class="text-center mt-2">
                 <span>Don't have an account?</span>
-                <a href="/register" class="text-link">Register</a>
+                <a class="text-link"  href="{{ route('register') }}">{{ __('Register') }}</a>
             </div>
         </form>
     </div>

@@ -34,7 +34,7 @@
               aria-expanded="false"
             >
               <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
-              <span>Stebin Ben</span>
+              <span>{{ auth()->user()->name }}</span>
             </a>
   
             <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
@@ -44,8 +44,8 @@
                     <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar wid-35">
                   </div>
                   <div class="flex-grow-1 ms-3">
-                    <h6 class="mb-1">Stebin Ben</h6>
-                    <span>UI/UX Designer</span>
+                    <h6 class="mb-1">{{ auth()->user()->name }}</h6>
+                    <span>{{ auth()->user()->role }}</span>
                   </div>
                 </div>
               </div>
@@ -53,10 +53,11 @@
               <!-- Tombol Logout -->
               <div class="dropdown-item text-center">
                 <form action="{{ route('logout') }}" method="POST">
-                  @csrf
-                  <button type="submit" class="btn btn-danger btn-sm w-100 mt-2">Logout</button>
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm w-100 mt-2">Logout</button>
                 </form>
-              </div>
+            </div>
+            
               
               <ul class="nav drp-tabs nav-fill nav-tabs" id="mydrpTab" role="tablist">
                 <li class="nav-item" role="presentation">
