@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\kursus;
+use App\materi;
+use App\pembayaran;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -36,9 +40,12 @@ class HomeController extends Controller
             $totalMateri = materi::count();
             $totalPembayaran = pembayaran::count();
     
-            return view('dashboard.user', compact('totalKursus', 'totalMateri', 'totalPembayaran'));
+            return view('dashboard.home', compact('totalKursus', 'totalMateri', 'totalPembayaran'));
         } elseif ($user->role === 'user') {
-            return view('dashboard.user');
+            $totalKursus = kursus::count();
+            $totalMateri = materi::count();
+            $totalPembayaran = pembayaran::count();
+            return view('dashboard.user', compact('totalKursus', 'totalMateri', 'totalPembayaran'));
         }
     
         // return redirect('/')->with('error', 'Akses tidak diizinkan.');

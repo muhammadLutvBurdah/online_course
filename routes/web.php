@@ -30,22 +30,21 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard/admin', [dashboardController::class, 'admin'])->name('dashboard.admin');
-    Route::get('/dashboard/user', [dashboardController::class, 'user'])->name('dashboard.user');
-});
-
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Auth::routes();
 
+// ✅ BISA DIAKSES OLEH ADMIN DAN USER
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+    
+});
+
+// ✅ KHUSUS ADMIN
 Route::middleware(['auth', 'role:admin'])->group(function () {
-
     Route::get('/kursus', [kursusController::class, 'index'])->name('kursus.index');
     Route::get('/kursus/create', [kursusController::class, 'create'])->name('kursus.create');
     Route::post('/kursus', [kursusController::class, 'store'])->name('kursus.store');
@@ -54,9 +53,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/kursus/{kursus}', [kursusController::class, 'destroy'])->name('kursus.destroy');
     Route::get('/kursus/{kursus}', [kursusController::class, 'show'])->name('kursus.show');
 
-
-    // Rute CRUD untuk Materi
-
     Route::get('/materi', [materiController::class, 'index'])->name('materi.index');
     Route::get('/materi/create', [materiController::class, 'create'])->name('materi.create');
     Route::post('/materi', [materiController::class, 'store'])->name('materi.store');
@@ -64,8 +60,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/materi/{materi}', [materiController::class, 'update'])->name('materi.update');
     Route::delete('/materi/{materi}', [materiController::class, 'destroy'])->name('materi.destroy');
     Route::get('/materi/{materi}', [materiController::class, 'show'])->name('materi.show');
-
-    // Rute CRUD untuk Pembayaran
 
     Route::get('/pembayaran', [pembayaranController::class, 'index'])->name('pembayaran.index');
     Route::get('/pembayaran/create', [pembayaranController::class, 'create'])->name('pembayaran.create');
@@ -76,11 +70,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/pembayaran/{pembayaran}', [pembayaranController::class, 'show'])->name('pembayaran.show');
 });
 
-// Untuk USER
+// ✅ KHUSUS USER
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/kursusPengguna', [kursusPenggunaController::class, 'index'])->name('kursusPengguna.index');
     Route::get('/materiPengguna', [materiPenggunaController::class, 'index'])->name('materiPengguna.index');
 });
-
-// Route::get('/materi/{id}', [MateriPenggunaController::class, 'index'])->name('materiPengguna.index');
-

@@ -29,13 +29,11 @@ class dashboardController extends Controller
             $totalPembayaran = pembayaran::count();
     
             return view('dashboard.home', compact('totalKursus', 'totalMateri', 'totalPembayaran'));
-        } elseif ($user->role === 'user') {
+        } elseif ($user->role === 'user') { 
             return view('dashboard.user');
         }else{
-
+           return redirect('/login')->with('error', 'Akses tidak diizinkan.');
         }
-    
-        // return redirect('/')->with('error', 'Akses tidak diizinkan.');
     }
 
     /**

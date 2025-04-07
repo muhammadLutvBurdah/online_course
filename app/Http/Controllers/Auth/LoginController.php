@@ -28,7 +28,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    
 
     public function showLoginForm()
     {
@@ -46,22 +47,42 @@ class LoginController extends Controller
     }
 
 
-    public function login(Request $request) {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-    
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard');
+    public function login(Request $request)
+{
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return view('dashboard.home');
+        } else {
+            return view('dashboard.user');
         }
-    
-        return back()->withErrors(['email' => 'Email atau password salah.']);
     }
 
+    return back()->withErrors([
+        'email' => 'Email atau password salah.',
+    ]);
+}
     public function logout(Request $request)
     {
         Auth::logout();
         return redirect('/login');
+    }
+
+
+    protected function redirectTo()
+    {
+        if (auth()->user()->role === 'admin') {
+            return '/dashboard';
+        } else {
+            return '/user-dashboard';
+        }
     }
 }

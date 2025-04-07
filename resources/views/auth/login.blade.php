@@ -89,7 +89,7 @@
             </div>
             <div class="text-center mt-2">
                 <span>Don't have an account?</span>
-                <a href="/register" class="text-link">Register</a>
+                <a class="text-link"  href="{{ route('register') }}">{{ __('Register') }}</a>
             </div>
         </form>
     </div>
