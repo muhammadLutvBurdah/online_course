@@ -1,22 +1,6 @@
 @extends('partial.template')
 
 @section('content')
-<<<<<<< Updated upstream
-
-    {{-- <div class="pc-container">
-        <div class="pc-content">
-            <!-- [ breadcrumb ] start -->
-            <div class="page-header">
-                <div class="page-block">
-                    <div class="row align-items-center">
-                        <div class="col-md-12">
-                            <div class="page-header-title">
-                                <h5 class="m-b-10">Home</h5>
-                            </div>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                            </ul>
-=======
 <div class="pc-container">
     <div class="pc-content">
         <div class="page-header">
@@ -25,7 +9,6 @@
                     <div class="col-md-12">
                         <div class="page-header-title">
                             <h5 class="m-b-10">Home</h5>
->>>>>>> Stashed changes
                         </div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
@@ -34,10 +17,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< Updated upstream
-    </div> --}}
-=======
->>>>>>> Stashed changes
 
         <!-- Kursus Cards -->
         <div class="row">
