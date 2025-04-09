@@ -12,12 +12,11 @@
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Halaman</a></li>
                                 <li class="breadcrumb-item"><a href="#">Kursus</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Daftar</li>
                             </ul>
                         </div>
                         <div class="col-md-12">
                             <div class="page-header-title">
-                                <h2 class="mb-0">Daftar Kursussss</h2>
+                                <h2 class="mb-0">Daftar Kursus</h2>
                             </div>
                         </div>
                     </div>

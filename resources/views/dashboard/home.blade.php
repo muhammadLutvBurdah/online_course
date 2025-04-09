@@ -35,7 +35,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-2 f-w-400 text-muted">Total Kursus</h6>
-                            {{-- <h4 class="mb-3">{{ ($totalKursus) }} <span class="badge bg-light-success border border-success"></span></h4> --}}
+                            <h4 class="mb-3">gabisa<span class="badge bg-light-success border border-success"></span></h4>
                         </div>
                     </div>
                 </div>

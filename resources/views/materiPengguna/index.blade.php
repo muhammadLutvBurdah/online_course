@@ -12,7 +12,6 @@
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Halaman</a></li>
                                 <li class="breadcrumb-item"><a href="#">Materi</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Daftar</li>
                             </ul>
                         </div>
                         <div class="col-md-12">
