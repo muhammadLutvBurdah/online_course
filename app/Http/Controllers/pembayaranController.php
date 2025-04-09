@@ -26,7 +26,7 @@ class pembayaranController extends Controller
      */
     public function create()
     {
-        $kursus = Kursus::all(); // Pastikan kursus diambil dari database
+        $kursus = Kursus::all();
         return view('pembayaran.create', compact('kursus'));
     }
 
@@ -41,7 +41,7 @@ class pembayaranController extends Controller
         $request->validate([
             'kursusid' => 'required|exists:kursus,kursusid',
             'tujuan_tf' => 'required|string',
-            'tanggal_tf' => 'required|date', // Pastikan ini ada
+            'tanggal_tf' => 'required|date', 
             'jumlah_pembayaran' => 'required|numeric|min:0'
         ]);
 

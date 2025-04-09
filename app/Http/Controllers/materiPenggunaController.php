@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\kursusPengguna;
 use App\materiPengguna;
+use App\materi  ;
+use App\kursus;
 class materiPenggunaController extends Controller
 {
     /**
@@ -14,16 +16,19 @@ class materiPenggunaController extends Controller
      */
     public function index(Request $request)
     {
-        // Ambil daftar kursus dengan relasi yang benar
-        $kursusPengguna = KursusPengguna::where('id');
+        $kursusPengguna = kursus::all();
 
-        // Ambil daftar materi dengan filter kursus (jika ada)
-        $materiPengguna = MateriPengguna::when($request->kursusid, function ($query) use ($request) {
-            return $query->where('kursusid', $request->kursusid);
-        })->orderBy('created_at', 'desc')->paginate(10);
+        $query = materi::query()->with('kursus');
+
+        if ($request->has('kursusid') && $request->kursusid != '') {
+            $query->where('kursusid', $request->kursusid);
+        }
+
+        $materiPengguna = $query->get();
 
         return view('materiPengguna.index', compact('materiPengguna', 'kursusPengguna'));
     }
+
 
     /**
      * Show the form for creating a new resource.

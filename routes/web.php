@@ -74,6 +74,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/kursusPengguna', [kursusPenggunaController::class, 'index'])->name('kursusPengguna.index');
     Route::get('/materiPengguna', [materiPenggunaController::class, 'index'])->name('materiPengguna.index');
-    Route::post('/keranjang/tambah/{id}', [App\Http\Controllers\dashboardController::class, 'tambah'])->name('keranjang.tambah');
+    Route::post('/pembayaran/store', [pembayaranController::class, 'store'])->name('pembayaran.store');
+    Route::get('/pembayaran/create', [pembayaranController::class, 'create'])->name('pembayaran.create');
+
 
 });

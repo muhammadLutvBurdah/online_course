@@ -36,6 +36,8 @@
                                 <p class="card-text">{{ $k->deskripsi ?? '-' }}</p>
                                 <p class="card-text"><strong>Rp{{ number_format($k->harga, 2) }}</strong></p>
                                 <a href="{{ route('materiPengguna.index', $k->materiid) }}" class="btn btn-primary btn-sm">Detail</a>
+                                <a href="{{ route('pembayaran.create', $k->kursusid) }}" class="btn btn-success btn-sm  ">Beli Sekarang</a>
+
                             </div>
                         </div>
                     </div>
@@ -43,5 +45,4 @@
             </div>
         </div>
     </section>
-
 @endsection

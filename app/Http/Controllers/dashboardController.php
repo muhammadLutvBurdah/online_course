@@ -74,7 +74,7 @@ class dashboardController extends Controller
                 ]
             ];
 
-            
+
 
             return view('dashboard.user', compact('kursusList'));
         } else {
